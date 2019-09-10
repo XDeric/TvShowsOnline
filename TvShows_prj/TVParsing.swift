@@ -7,3 +7,32 @@
 //
 
 import Foundation
+
+struct TVShows: Codable{
+    let id: Int
+    let name: String
+    let rating: Avg
+    let image: Image
+    
+    struct Avg: Codable{
+        let average: Double
+    }
+    
+    struct Image: Codable {
+        let medium: String
+    }
+}
+
+//------------------------------------------------------------------------
+struct SeasonEpisodes: Codable{
+    let name: String
+    let season: Int
+    let number: Int
+    let summary: String
+    let image: Image
+    
+    struct Image: Codable {
+        let medium: String
+    }
+}
+

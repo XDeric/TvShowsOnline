@@ -22,7 +22,6 @@ class ImageHelper {
             completionHandler(.failure(AppError.badUrl))
             return
         }
-        
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard error == nil else {
                 completionHandler(.failure(AppError.noDataError))
@@ -32,16 +31,11 @@ class ImageHelper {
                 completionHandler(.failure(AppError.noDataError))
                 return
             }
-            
-            
             guard let image = UIImage(data: data) else {
                 completionHandler(.failure(AppError.noDataError))
                 return
             }
-            
             completionHandler(.success(image))
-            
-            
             }.resume()
     }
 }

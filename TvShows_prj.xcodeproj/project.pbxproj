@@ -17,8 +17,8 @@
 		85BEBFB92327F04000EE74BE /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEBFB82327F04000EE74BE /* ImageManager.swift */; };
 		85BEBFBB2327F08B00EE74BE /* ShowsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEBFBA2327F08B00EE74BE /* ShowsDetailViewController.swift */; };
 		85BEBFBD2327F09A00EE74BE /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEBFBC2327F09A00EE74BE /* EpisodeViewController.swift */; };
-		85BEBFBF2327F10400EE74BE /* SecretApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEBFBE2327F10400EE74BE /* SecretApiKey.swift */; };
 		85BEBFC12327F12D00EE74BE /* TVParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEBFC02327F12D00EE74BE /* TVParsing.swift */; };
+		85BEBFC5232864A800EE74BE /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEBFC4232864A800EE74BE /* Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +46,8 @@
 		85BEBFB82327F04000EE74BE /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		85BEBFBA2327F08B00EE74BE /* ShowsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsDetailViewController.swift; sourceTree = "<group>"; };
 		85BEBFBC2327F09A00EE74BE /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
-		85BEBFBE2327F10400EE74BE /* SecretApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretApiKey.swift; sourceTree = "<group>"; };
 		85BEBFC02327F12D00EE74BE /* TVParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVParsing.swift; sourceTree = "<group>"; };
+		85BEBFC4232864A800EE74BE /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +91,7 @@
 			children = (
 				85BEBFB52327EF9500EE74BE /* Supporting Files */,
 				85BEBFC02327F12D00EE74BE /* TVParsing.swift */,
-				85BEBFBE2327F10400EE74BE /* SecretApiKey.swift */,
+				85BEBFC4232864A800EE74BE /* Errors.swift */,
 				85BEBFB62327F03200EE74BE /* NetworkManager.swift */,
 				85BEBFB82327F04000EE74BE /* ImageManager.swift */,
 				85BEBF972327EF8900EE74BE /* TVShowsViewController.swift */,
@@ -227,9 +227,9 @@
 				85BEBFBB2327F08B00EE74BE /* ShowsDetailViewController.swift in Sources */,
 				85BEBFB72327F03200EE74BE /* NetworkManager.swift in Sources */,
 				85BEBF982327EF8900EE74BE /* TVShowsViewController.swift in Sources */,
+				85BEBFC5232864A800EE74BE /* Errors.swift in Sources */,
 				85BEBF962327EF8900EE74BE /* AppDelegate.swift in Sources */,
 				85BEBFBD2327F09A00EE74BE /* EpisodeViewController.swift in Sources */,
-				85BEBFBF2327F10400EE74BE /* SecretApiKey.swift in Sources */,
 				85BEBFB92327F04000EE74BE /* ImageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
