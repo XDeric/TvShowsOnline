@@ -94,8 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				85BEBFB52327EF9500EE74BE /* Supporting Files */,
-				85BEBFC02327F12D00EE74BE /* TVParsing.swift */,
 				85BEBFC4232864A800EE74BE /* Errors.swift */,
+				85BEBFC02327F12D00EE74BE /* TVParsing.swift */,
 				85BEBFB62327F03200EE74BE /* NetworkManager.swift */,
 				85BEBFB82327F04000EE74BE /* ImageManager.swift */,
 				85BEBFC62328668100EE74BE /* TVShowsTableViewCell.swift */,

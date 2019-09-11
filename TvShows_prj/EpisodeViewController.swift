@@ -9,32 +9,68 @@
 import UIKit
 
 class EpisodeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
     @IBOutlet weak var episodeTableViewOutlet: UITableView!
+    var epInfo: TVShows!
+    var episodes = [SeasonEpisodes](){
+        didSet {
+            episodeTableViewOutlet.reloadData()
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return episodes.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 240
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let epNumber = episodes[indexPath.row]
+        if let cell = episodeTableViewOutlet.dequeueReusableCell(withIdentifier: "episodeCell", for: indexPath) as? EpisodeTableViewCell {
+            
+            func loadImage(site: String){
+                let urlStr = site
+                guard let url = URL(string: urlStr) else{return}
+                DispatchQueue.global(qos: .userInitiated).async {
+                    do {
+                        let data = try Data(contentsOf: url)
+                        let image = UIImage(data: data)
+                        DispatchQueue.main.async {
+                            cell.episodeImage.image = image
+                        }
+                    } catch {
+                        fatalError()
+                    }
+                }
+            }
+            loadImage(site: epNumber.image?.medium ?? "no image")
+            cell.episodeName1Label.text = epNumber.name
+            cell.episodeSeason1Label.text = "Season: \(epNumber.season) Episode: \(epNumber.number)"
+            
+        }
         return UITableViewCell()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    private func loadData() {
+        NetworkManager.shared.getEpisode(tvShow: epInfo!.id){ (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let epFromOnline):
+                    self.episodes = epFromOnline
+                }
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        episodeTableViewOutlet.dataSource = self
+        episodeTableViewOutlet.delegate = self
+        loadData()
+        // Do any additional setup after loading the view.
     }
-    */
-
 }

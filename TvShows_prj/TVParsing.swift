@@ -29,7 +29,7 @@ struct SeasonEpisodes: Codable{
     let season: Int
     let number: Int
     let summary: String
-    let image: Image
+    let image: Image?
     
     struct Image: Codable {
         let medium: String

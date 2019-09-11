@@ -86,6 +86,18 @@ class TVShowsViewController: UIViewController, UITableViewDataSource,UITableView
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier != nil else { fatalError("No identifier in segue")
+        }
+        guard let tvVC = segue.destination as? EpisodeViewController
+            else { fatalError("Unexpected segue")}
+        guard let selectedIndexPath = tvShowsTableViewOutlet.indexPathForSelectedRow
+            else { fatalError("No row selected")}
+        tvVC.epInfo = tvShows[selectedIndexPath.row]
+    }
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tvShowsTableViewOutlet.dataSource = self

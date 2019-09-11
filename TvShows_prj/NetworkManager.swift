@@ -23,7 +23,7 @@ class NetworkManager {
     func getTVShow(/*tvShow: TVShows,*/ completionHandler: @escaping (Result<[TVShows], AppError>) -> Void){
         
         let urlStr = "http://api.tvmaze.com/shows"
-        let urlStr2 = "http://api.tvmaze.com/shows/1/episodes"
+        //let urlStr2 = "http://api.tvmaze.com/shows/1/episodes"
         
         guard let url = URL(string: urlStr) else {
             completionHandler(.failure(.badUrl))
@@ -43,6 +43,36 @@ class NetworkManager {
             do {
                 let tvData = try JSONDecoder().decode([TVShows].self, from: data)
                 completionHandler(.success(tvData))
+            }
+            catch {
+                print(error)
+                completionHandler(.failure(.networkError))
+            }
+            }.resume()
+    }
+    
+    func getEpisode(tvShow: Int, completionHandler: @escaping (Result<[SeasonEpisodes], AppError>) -> Void){
+
+            let urlStr2 = "http://api.tvmaze.com/shows/\(tvShow)/episodes"
+        
+        guard let url = URL(string: urlStr2) else {
+            completionHandler(.failure(.badUrl))
+            return
+        }
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            guard error == nil else {
+                completionHandler(.failure(.noDataError))
+                return
+            }
+            
+            guard let data = data else {
+                completionHandler(.failure(.noDataError))
+                return
+            }
+            
+            do {
+                let epData = try JSONDecoder().decode([SeasonEpisodes].self, from: data)
+                completionHandler(.success(epData))
             }
             catch {
                 print(error)
