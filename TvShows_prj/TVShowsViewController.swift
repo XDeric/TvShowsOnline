@@ -8,13 +8,91 @@
 
 import UIKit
 
-class TVShowsViewController: UIViewController {
-
+class TVShowsViewController: UIViewController, UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate{
+    var tvShows = [TVShows]()
+    @IBOutlet weak var tvShowsTableViewOutlet: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var searchString: String? = nil {
+        didSet{
+            self.tvShowsTableViewOutlet.reloadData()
+        }
+    }
+    
+    var tvSearchResults: [TVShows]{
+        guard let _ = searchString else{
+            return tvShows
+        }
+        guard searchString != "" else {
+            return tvShows
+        }
+        let results = tvShows.filter{$0.name.lowercased().contains(searchString!.lowercased())}
+        return results
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchString = searchBar.text
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchString = searchBar.text
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 240
+    }
+   
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tvSearchResults.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let tv = tvSearchResults[indexPath.row]
+        if let cell = tvShowsTableViewOutlet.dequeueReusableCell(withIdentifier: "tvCell", for: indexPath) as? TVShowsTableViewCell{
+            
+            func loadImage(site: String){
+                let urlStr = site
+                guard let url = URL(string: urlStr) else{return}
+                DispatchQueue.global(qos: .userInitiated).async {
+                    do {
+                        let data = try Data(contentsOf: url)
+                        let image = UIImage(data: data)
+                        DispatchQueue.main.async {
+                            cell.tvShowImage.image = image
+                        }
+                    } catch {
+                        fatalError()
+                    }
+                }
+            }
+            loadImage(site: tv.image.medium)
+            cell.tvNameLabel.text = tv.name
+            //cell.ratingLabel.text = "Rating: \(tv.rating.average)"
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    private func loadData() {
+        NetworkManager.shared.getTVShow{ (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let tvFromOnline):
+                    self.tvShows = tvFromOnline
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tvShowsTableViewOutlet.dataSource = self
+        tvShowsTableViewOutlet.delegate = self
+        searchBar.delegate = self
+        loadData()
         // Do any additional setup after loading the view.
     }
-
-
 }
 

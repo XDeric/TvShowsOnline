@@ -20,17 +20,15 @@ class NetworkManager {
     //Parameters: URL as a string
     //Completion: Result with Data in success, AppError in failure
     
-    func getPokemon(tvShow: TVShows, completionHandler: @escaping (Result<TVShows, AppError>) -> Void){
+    func getTVShow(/*tvShow: TVShows,*/ completionHandler: @escaping (Result<[TVShows], AppError>) -> Void){
         
         let urlStr = "http://api.tvmaze.com/shows"
-        let urlStr2 = "http://api.tvmaze.com/shows/\(tvShow.id)/episodes"
+        let urlStr2 = "http://api.tvmaze.com/shows/1/episodes"
         
         guard let url = URL(string: urlStr) else {
             completionHandler(.failure(.badUrl))
             return
         }
-        
-        
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard error == nil else {
                 completionHandler(.failure(.noDataError))
@@ -43,7 +41,7 @@ class NetworkManager {
             }
             
             do {
-                let tvData = try JSONDecoder().decode(TVShows.self, from: data)
+                let tvData = try JSONDecoder().decode([TVShows].self, from: data)
                 completionHandler(.success(tvData))
             }
             catch {

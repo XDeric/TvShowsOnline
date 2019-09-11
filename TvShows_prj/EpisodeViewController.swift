@@ -8,8 +8,18 @@
 
 import UIKit
 
-class EpisodeViewController: UIViewController {
-
+class EpisodeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var episodeTableViewOutlet: UITableView!
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

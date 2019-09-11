@@ -19,6 +19,8 @@
 		85BEBFBD2327F09A00EE74BE /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEBFBC2327F09A00EE74BE /* EpisodeViewController.swift */; };
 		85BEBFC12327F12D00EE74BE /* TVParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEBFC02327F12D00EE74BE /* TVParsing.swift */; };
 		85BEBFC5232864A800EE74BE /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEBFC4232864A800EE74BE /* Errors.swift */; };
+		85BEBFC72328668100EE74BE /* TVShowsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEBFC62328668100EE74BE /* TVShowsTableViewCell.swift */; };
+		85BEBFC92328669300EE74BE /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEBFC82328669300EE74BE /* EpisodeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		85BEBFBC2327F09A00EE74BE /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
 		85BEBFC02327F12D00EE74BE /* TVParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVParsing.swift; sourceTree = "<group>"; };
 		85BEBFC4232864A800EE74BE /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		85BEBFC62328668100EE74BE /* TVShowsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsTableViewCell.swift; sourceTree = "<group>"; };
+		85BEBFC82328669300EE74BE /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +98,11 @@
 				85BEBFC4232864A800EE74BE /* Errors.swift */,
 				85BEBFB62327F03200EE74BE /* NetworkManager.swift */,
 				85BEBFB82327F04000EE74BE /* ImageManager.swift */,
+				85BEBFC62328668100EE74BE /* TVShowsTableViewCell.swift */,
 				85BEBF972327EF8900EE74BE /* TVShowsViewController.swift */,
-				85BEBFBA2327F08B00EE74BE /* ShowsDetailViewController.swift */,
+				85BEBFC82328669300EE74BE /* EpisodeTableViewCell.swift */,
 				85BEBFBC2327F09A00EE74BE /* EpisodeViewController.swift */,
+				85BEBFBA2327F08B00EE74BE /* ShowsDetailViewController.swift */,
 				85BEBF992327EF8900EE74BE /* Main.storyboard */,
 				85BEBF9C2327EF8A00EE74BE /* Assets.xcassets */,
 				85BEBFA12327EF8A00EE74BE /* Info.plist */,
@@ -225,6 +231,8 @@
 			files = (
 				85BEBFC12327F12D00EE74BE /* TVParsing.swift in Sources */,
 				85BEBFBB2327F08B00EE74BE /* ShowsDetailViewController.swift in Sources */,
+				85BEBFC72328668100EE74BE /* TVShowsTableViewCell.swift in Sources */,
+				85BEBFC92328669300EE74BE /* EpisodeTableViewCell.swift in Sources */,
 				85BEBFB72327F03200EE74BE /* NetworkManager.swift in Sources */,
 				85BEBF982327EF8900EE74BE /* TVShowsViewController.swift in Sources */,
 				85BEBFC5232864A800EE74BE /* Errors.swift in Sources */,

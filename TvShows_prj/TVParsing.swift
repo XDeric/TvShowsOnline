@@ -11,12 +11,12 @@ import Foundation
 struct TVShows: Codable{
     let id: Int
     let name: String
-    let rating: Avg
+    //let rating: Avg
     let image: Image
     
-    struct Avg: Codable{
-        let average: Double
-    }
+//    struct Avg: Codable{
+//        let average: Double
+//    }
     
     struct Image: Codable {
         let medium: String
