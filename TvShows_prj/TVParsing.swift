@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Television: Codable{
-    let show: TVShows
-}
+//struct Television: Codable{
+//    let show: TVShows
+//}
     struct TVShows: Codable{
         let id: Int
         let name: String
@@ -32,7 +32,7 @@ struct SeasonEpisodes: Codable{
     let name: String
     let season: Int
     let number: Int
-    let summary: String
+    let summary: String?
     let image: Image?
     
     struct Image: Codable {

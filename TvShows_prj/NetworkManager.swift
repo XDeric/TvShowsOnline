@@ -20,9 +20,9 @@ class NetworkManager {
     //Parameters: URL as a string
     //Completion: Result with Data in success, AppError in failure
     
-    func getTVShow(query: String, completionHandler: @escaping (Result<[Television], AppError>) -> Void){
-        let urlStr = "http://api.tvmaze.com/search/shows?q=\(query)"
-        
+    func getTVShow(/*query: String,*/ completionHandler: @escaping (Result<[TVShows], AppError>) -> Void){
+        //let urlStr = "http://api.tvmaze.com/search/shows?q=\(query)"
+        let urlStr = "http://api.tvmaze.com/shows"
         guard let url = URL(string: urlStr) else {
             completionHandler(.failure(.badUrl))
             return
@@ -39,7 +39,7 @@ class NetworkManager {
             }
             
             do {
-                let tvData = try JSONDecoder().decode([Television].self, from: data)
+                let tvData = try JSONDecoder().decode([TVShows].self, from: data)
                 completionHandler(.success(tvData))
             }
             catch {

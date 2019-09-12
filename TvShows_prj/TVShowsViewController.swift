@@ -9,7 +9,7 @@
 import UIKit
 
 class TVShowsViewController: UIViewController, UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate{
-    var tvShows = [Television]()
+    var tvShows = [TVShows]()
     @IBOutlet weak var tvShowsTableViewOutlet: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -19,14 +19,14 @@ class TVShowsViewController: UIViewController, UITableViewDataSource,UITableView
         }
     }
     
-    var tvSearchResults: [Television]{
+    var tvSearchResults: [TVShows]{
         guard let _ = searchString else{
             return tvShows
         }
         guard searchString != "" else {
             return tvShows
         }
-        let results = tvShows.filter{$0.show.name.lowercased().contains(searchString!.lowercased())}
+        let results = tvShows.filter{$0.name.lowercased().contains(searchString!.lowercased())}
         return results
     }
     
@@ -37,7 +37,6 @@ class TVShowsViewController: UIViewController, UITableViewDataSource,UITableView
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchString = searchBar.text
-        loadData()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 240
@@ -66,17 +65,17 @@ class TVShowsViewController: UIViewController, UITableViewDataSource,UITableView
                     }
                 }
             }
-            if let image = tv.show.image?.medium { loadImage(site: image) } else {cell.tvShowImage.image = UIImage(named: "noPic")}
-            cell.tvNameLabel.text = tv.show.name
+            if let image = tv.image?.medium { loadImage(site: image) } else {cell.tvShowImage.image = UIImage(named: "noPic")}
+            cell.tvNameLabel.text = tv.name
             let test = "No rating"
-            if let rating = tv.show.rating?.average { cell.ratingLabel.text = "Rating: \(rating)" } else { cell.ratingLabel.text = test }
+            if let rating = tv.rating?.average { cell.ratingLabel.text = "Rating: \(rating)" } else { cell.ratingLabel.text = test }
             return cell
         }
         return UITableViewCell()
     }
     
     private func loadData() {
-        NetworkManager.shared.getTVShow(query: searchString ?? ""){ (result) in
+        NetworkManager.shared.getTVShow{ (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
@@ -95,7 +94,7 @@ class TVShowsViewController: UIViewController, UITableViewDataSource,UITableView
             else { fatalError("Unexpected segue")}
         guard let selectedIndexPath = tvShowsTableViewOutlet.indexPathForSelectedRow
             else { fatalError("No row selected")}
-        tvVC.epInfo = tvShows[selectedIndexPath.row]
+        tvVC.epInfo = tvSearchResults[selectedIndexPath.row]
     }
     
 
@@ -105,7 +104,7 @@ class TVShowsViewController: UIViewController, UITableViewDataSource,UITableView
         tvShowsTableViewOutlet.dataSource = self
         tvShowsTableViewOutlet.delegate = self
         searchBar.delegate = self
-        //loadData()
+        loadData()
         // Do any additional setup after loading the view.
     }
 }

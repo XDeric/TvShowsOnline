@@ -154,7 +154,7 @@
                                             <outlet property="episodeImage" destination="cWc-Gf-3f7" id="N8P-1s-zlA"/>
                                             <outlet property="episodeName1Label" destination="ke7-RF-idc" id="mfh-AD-DNX"/>
                                             <outlet property="episodeSeason1Label" destination="YFw-GT-LmM" id="Xk3-6m-iAN"/>
-                                            <segue destination="ltN-Cz-v7N" kind="show" identifier="episodeSegway" id="2Fe-C1-OGa"/>
+                                            <segue destination="ltN-Cz-v7N" kind="show" identifier="episodeSegway" id="PvZ-yO-vLY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

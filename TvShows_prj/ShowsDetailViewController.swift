@@ -21,7 +21,9 @@ class ShowsDetailViewController: UIViewController {
         loadImage(site: epDetail.image!.medium)
         epNameLabel.text = epDetail.name
         epSeasonLabel.text = "Season: \(epDetail.season) Episode: \(epDetail.number)"
-        summaryText.text = epDetail.summary
+        if let summary = epDetail.summary{ summaryText.text = summary } else {
+            summaryText.text = "No summary"
+        }
 
         // Do any additional setup after loading the view.
     }

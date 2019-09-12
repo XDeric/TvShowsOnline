@@ -10,7 +10,7 @@ import UIKit
 
 class EpisodeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var episodeTableViewOutlet: UITableView!
-    var epInfo: Television!
+    var epInfo: TVShows!
     var episodes = [SeasonEpisodes](){
         didSet {
             episodeTableViewOutlet.reloadData()
@@ -44,7 +44,7 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
                     }
                 }
             }
-            loadImage(site: epNumber.image?.medium ?? "no image")
+            if let image = epNumber.image?.medium { loadImage(site: image) } else {cell.episodeImage.image = UIImage(named: "noPic")}
             cell.episodeName1Label.text = epNumber.name
             cell.episodeSeason1Label.text = "Season: \(epNumber.season) Episode: \(epNumber.number)"
             
@@ -53,7 +53,7 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func loadData() {
-        NetworkManager.shared.getEpisode(tvShow: epInfo!.show.id){ (result) in
+        NetworkManager.shared.getEpisode(tvShow: epInfo!.id){ (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
