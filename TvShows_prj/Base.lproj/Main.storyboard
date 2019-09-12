@@ -233,6 +233,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="woQ-ml-WEX"/>
                     </view>
+                    <connections>
+                        <outlet property="detailImageOutlet" destination="JdM-ee-dTK" id="gSk-h8-n1y"/>
+                        <outlet property="epNameLabel" destination="lMM-Qi-fxm" id="bZ0-ge-QB6"/>
+                        <outlet property="epSeasonLabel" destination="A2j-cS-vv1" id="JMz-0Z-TqV"/>
+                        <outlet property="summaryText" destination="KlY-vw-klD" id="d3W-dD-7D4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xth-lg-7Dl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

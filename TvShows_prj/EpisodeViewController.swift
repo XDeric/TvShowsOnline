@@ -10,7 +10,7 @@ import UIKit
 
 class EpisodeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var episodeTableViewOutlet: UITableView!
-    var epInfo: TVShows!
+    var epInfo: Television!
     var episodes = [SeasonEpisodes](){
         didSet {
             episodeTableViewOutlet.reloadData()
@@ -53,7 +53,7 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func loadData() {
-        NetworkManager.shared.getEpisode(tvShow: epInfo!.id){ (result) in
+        NetworkManager.shared.getEpisode(tvShow: epInfo!.show.id){ (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
@@ -63,6 +63,16 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier != nil else { fatalError("No identifier in segue")
+        }
+        guard let epVC = segue.destination as? ShowsDetailViewController
+            else { fatalError("Unexpected segue")}
+        guard let selectedIndexPath = episodeTableViewOutlet.indexPathForSelectedRow
+            else { fatalError("No row selected")}
+        epVC.epDetail = episodes[selectedIndexPath.row]
     }
     
     
