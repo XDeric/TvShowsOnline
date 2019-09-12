@@ -65,15 +65,40 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier != nil else { fatalError("No identifier in segue")
-        }
-        guard let epVC = segue.destination as? ShowsDetailViewController
-            else { fatalError("Unexpected segue")}
-        guard let selectedIndexPath = episodeTableViewOutlet.indexPathForSelectedRow
-            else { fatalError("No row selected")}
-        epVC.epDetail = episodes[selectedIndexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ShowsDetailViewController") as! ShowsDetailViewController
+        vc.epDetail = episodes[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        guard let epVC = segue.destination as? ShowsDetailViewController
+//            else { fatalError("Unexpected segue")}
+//        guard let selectedIndexPath = episodeTableViewOutlet.indexPathForSelectedRow
+//            else { fatalError("No row selected")}
+//
+//        epVC.epDetail = episodes[selectedIndexPath.row]
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let segueIdentifier = segue.identifier else { fatalError("No identifier in segue") }
+//
+//        switch segueIdentifier {
+//        case "episodeSegue" :
+//            guard let epVC = segue.destination as? ShowsDetailViewController else {
+//                fatalError("Unexpected segue VC")
+//            }
+//            guard let selectedIndexPath = episodeTableViewOutlet.indexPathForSelectedRow else {
+//                fatalError("No row was selected")
+//            }
+//            epVC.epDetail = episodes[selectedIndexPath.row]
+//        default:
+//            fatalError("Unexpected segue identifier")
+//        }
+//    }
+
     
     
     override func viewDidLoad() {

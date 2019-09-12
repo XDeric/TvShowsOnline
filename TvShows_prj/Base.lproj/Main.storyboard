@@ -154,7 +154,6 @@
                                             <outlet property="episodeImage" destination="cWc-Gf-3f7" id="N8P-1s-zlA"/>
                                             <outlet property="episodeName1Label" destination="ke7-RF-idc" id="mfh-AD-DNX"/>
                                             <outlet property="episodeSeason1Label" destination="YFw-GT-LmM" id="Xk3-6m-iAN"/>
-                                            <segue destination="ltN-Cz-v7N" kind="show" identifier="episodeSegway" id="PvZ-yO-vLY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -180,13 +179,13 @@
         <!--Shows Detail View Controller-->
         <scene sceneID="sCo-r2-nwG">
             <objects>
-                <viewController id="ltN-Cz-v7N" customClass="ShowsDetailViewController" customModule="TvShows_prj" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowsDetailViewController" id="ltN-Cz-v7N" customClass="ShowsDetailViewController" customModule="TvShows_prj" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lQF-dX-IUk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JdM-ee-dTK">
-                                <rect key="frame" x="20" y="113" width="374" height="277"/>
+                                <rect key="frame" x="20" y="69" width="374" height="321"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMM-Qi-fxm">
                                 <rect key="frame" x="20" y="450" width="374" height="41"/>
