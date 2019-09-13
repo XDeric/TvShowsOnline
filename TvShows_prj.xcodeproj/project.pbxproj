@@ -72,6 +72,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		859F2A2D232B44450086C9B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				85BEBFC4232864A800EE74BE /* Errors.swift */,
+				85BEBFC02327F12D00EE74BE /* TVParsing.swift */,
+				85BEBFB62327F03200EE74BE /* NetworkManager.swift */,
+				85BEBFB82327F04000EE74BE /* ImageManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		859F2A2E232B44730086C9B1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				85BEBFC62328668100EE74BE /* TVShowsTableViewCell.swift */,
+				85BEBF972327EF8900EE74BE /* TVShowsViewController.swift */,
+				85BEBFC82328669300EE74BE /* EpisodeTableViewCell.swift */,
+				85BEBFBC2327F09A00EE74BE /* EpisodeViewController.swift */,
+				85BEBFBA2327F08B00EE74BE /* ShowsDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		85BEBF892327EF8900EE74BE = {
 			isa = PBXGroup;
 			children = (
@@ -94,15 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				85BEBFB52327EF9500EE74BE /* Supporting Files */,
-				85BEBFC4232864A800EE74BE /* Errors.swift */,
-				85BEBFC02327F12D00EE74BE /* TVParsing.swift */,
-				85BEBFB62327F03200EE74BE /* NetworkManager.swift */,
-				85BEBFB82327F04000EE74BE /* ImageManager.swift */,
-				85BEBFC62328668100EE74BE /* TVShowsTableViewCell.swift */,
-				85BEBF972327EF8900EE74BE /* TVShowsViewController.swift */,
-				85BEBFC82328669300EE74BE /* EpisodeTableViewCell.swift */,
-				85BEBFBC2327F09A00EE74BE /* EpisodeViewController.swift */,
-				85BEBFBA2327F08B00EE74BE /* ShowsDetailViewController.swift */,
+				859F2A2D232B44450086C9B1 /* Model */,
+				859F2A2E232B44730086C9B1 /* Controller */,
 				85BEBF992327EF8900EE74BE /* Main.storyboard */,
 				85BEBF9C2327EF8A00EE74BE /* Assets.xcassets */,
 				85BEBFA12327EF8A00EE74BE /* Info.plist */,
