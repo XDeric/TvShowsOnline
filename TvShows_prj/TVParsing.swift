@@ -11,20 +11,28 @@ import Foundation
 //struct Television: Codable{
 //    let show: TVShows
 //}
-    struct TVShows: Codable{
-        let id: Int
-        let name: String
-        let rating: Avg?
-        let image: Image?
-    }
+struct TVShows: Codable{
+    let id: Int
+    let name: String
+    let rating: Avg?
+    let image: Image?
     
-    struct Avg: Codable{
-        let average: Double?
+    // this static func is for XCtesting
+    static func getTV(from data: Data) -> [TVShows]{
+        do{
+            let shows = try JSONDecoder().decode([TVShows].self, from: data)
+            return shows
+        } catch let anError { fatalError( "\(anError)" )}
     }
-    
-    struct Image: Codable {
-        let medium: String
-    }
+}
+
+struct Avg: Codable{
+    let average: Double?
+}
+
+struct Image: Codable {
+    let medium: String
+}
 
 
 //------------------------------------------------------------------------
